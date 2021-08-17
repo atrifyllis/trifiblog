@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>gr.alx</groupId>
+    <artifactId>triblog-maven</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.jbake</groupId>
+            <artifactId>jbake-maven-plugin</artifactId>
+            <version>0.3.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jbake</groupId>
+                <artifactId>jbake-maven-plugin</artifactId>
+                <version>0.3.4</version>
+                <configuration>
+
+                    <!--
+                    <inputDirectory>${project.basedir}/src/main/resources</inputDirectory>
+                    -->
+                    <outputDirectory>./docs</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-generate</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- include required dependencies here, see below -->
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj</artifactId>
+                        <version>2.4.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.freemarker</groupId>
+                        <artifactId>freemarker</artifactId>
+                        <version>2.3.31</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
