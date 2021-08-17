@@ -13,13 +13,15 @@
 	<p>${content.body}</p>
 
 	<hr />
-	
+
+	<script src="https://utteranc.es/client.js"
+			repo="atrifyllis/triblog"
+			issue-term="pathname"
+			<#--		theme="github-light"-->
+			crossorigin="anonymous"
+			async>
+	</script>
+
 <#include "footer.ftl">
 
-<script src="https://utteranc.es/client.js"
-		repo="atrifyllis/triblog"
-		issue-term="pathname"
-<#--		theme="github-light"-->
-		crossorigin="anonymous"
-		async>
-</script>
+
