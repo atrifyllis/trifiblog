@@ -1,0 +1,12 @@
+= About me...
+:jbake-date:
+:jbake-type: page
+:jbake-status: published
+
+My name is Alexandros Trifyllis, and I am a software engineer.
+
+My favorite dev stack is Java with Spring Boot ecosystem.
+
+I consider myself a full-stack engineer and  when working in the front-end I like to work with Angular 2+.
+
+For more info, you can find my CV https://atrifyllis.github.io/cv/[here].

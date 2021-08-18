@@ -1,0 +1,41 @@
+= How to create a blog fast using JBake and GitHub Pages
+Alexandros Trifyllis
+2021-08-18
+:jbake-type: draft
+:jbake-status: published
+:jbake-tags: jbake, github, blog
+
+== Intro
+
+This is so meta, but I decided that I wanted to start this blog by writing about the way I created it.
+
+I wanted a fast and easy way to write blog posts and publish them online.
+
+The easiest way to write docs that I know of is asciidoc, so I decided that writing the blog posts in asciidoc was a requirement.
+
+Furthermore, I already had some experience with GitHub pages, so I decided that this was going to be the host of my blog.
+
+I started looking at JBake for the main tool, the static site generator. I am familiar with the whole Java ecosystem, so it made sense.
+
+== Uber Fails
+
+NOTE: If you don't want to read about my failures, you can skip directly to <<_maven_to_the_rescue,the solution that worked>>
+
+=== JBake native
+I hit the first roadblock when I tried to use JBake directly in my Windows laptop. I think I hit this issue:
+
+https://github.com/jbake-org/jbake/issues/655
+
+I  needed to define the destination folder of the JBake generated site because GitHub Pages host by default the /docs folder of a git repository.
+
+=== Gradle Plugin
+After that, I tried to proceed with the https://github.com/jbake-org/jbake-gradle-plugin[Gradle plugin] for JBake. This is where I hit the second roadblock. I was getting all kind of exceptions for example when trying to run the bakePreview gradle tasks I was getting the following exception:
+
+----
+Cannot set readonly property: level for class: org.gradle.internal.logging.services.DefaultLoggingManager
+----
+
+== Maven to the rescue!
+
+
+
