@@ -6,8 +6,8 @@
     <atom:link href="https://trifiblog.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A blog of a software engineer</description>
     <language>en-gb</language>
-    <pubDate>Sun, 22 Aug 2021 22:24:31 +0300</pubDate>
-    <lastBuildDate>Sun, 22 Aug 2021 22:24:31 +0300</lastBuildDate>
+    <pubDate>Mon, 23 Aug 2021 00:19:17 +0300</pubDate>
+    <lastBuildDate>Mon, 23 Aug 2021 00:19:17 +0300</lastBuildDate>
 
     <item>
       <title>How to create a blog fast using JBake and GitHub Pages</title>
@@ -91,10 +91,10 @@ You can find the repository of this blog here:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;SSubjectively, the easiest way to write technical documentation is &lt;a href=&quot;https://asciidoctor.org/&quot;&gt;Asciidoc(tor)&lt;/a&gt;, so we decided that writing the blog posts in Asciidoc was a no-brainer.&lt;/p&gt;
+&lt;p&gt;Subjectively, the easiest way to write technical documentation is &lt;a href=&quot;https://asciidoctor.org/&quot;&gt;Asciidoc(tor)&lt;/a&gt;, so we decided that writing the blog posts in Asciidoc was a no-brainer.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I started looking at &lt;a href=&quot;https://jbake.org/&quot;&gt;JBake&lt;/a&gt; for the static site generator. If you are familiar with the whole Java ecosystem it makes sense to stick with it.&lt;/p&gt;
+&lt;p&gt;I started looking at &lt;a href=&quot;https://jbake.org/&quot;&gt;JBake&lt;/a&gt; for the static site generator. Especially if you are familiar with the whole Java ecosystem it makes sense to stick with it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Finally, publishing a site that resides in a GitHub repository through &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; is really straight-forward. There is not even any need for CI builds (if you don&amp;#8217;t want to), whatever is inside the &lt;code&gt;/docs&lt;/code&gt; folder of the repository is getting published!&lt;/p&gt;
@@ -131,7 +131,7 @@ If you don&amp;#8217;t want to read about the initial failures, you can skip dir
 &lt;div class=&quot;sect2&quot;&gt;
 &lt;h3 id=&quot;_gradle_plugin&quot;&gt;Gradle Plugin&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Next atempt was the &lt;a href=&quot;https://github.com/jbake-org/jbake-gradle-plugin&quot;&gt;Gradle plugin&lt;/a&gt; for JBake. This is where we hit the second roadblock. There were several  kind of exceptions.&lt;/p&gt;
+&lt;p&gt;Next attempt was the &lt;a href=&quot;https://github.com/jbake-org/jbake-gradle-plugin&quot;&gt;Gradle plugin&lt;/a&gt; for JBake. This is where we hit the second roadblock. There were several kinds of exceptions.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;For example, when trying to run the &lt;code&gt;bakePreview&lt;/code&gt; Gradle task I was getting the following exception:&lt;/p&gt;

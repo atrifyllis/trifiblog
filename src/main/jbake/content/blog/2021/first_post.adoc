@@ -34,9 +34,9 @@ The main requirements for this project was a fast and easy way to:
 * generate a static site from the posts
 * publish the blog online
 
-SSubjectively, the easiest way to write technical documentation is https://asciidoctor.org/[Asciidoc(tor)], so we decided that writing the blog posts in Asciidoc was a no-brainer.
+Subjectively, the easiest way to write technical documentation is https://asciidoctor.org/[Asciidoc(tor)], so we decided that writing the blog posts in Asciidoc was a no-brainer.
 
-I started looking at https://jbake.org/[JBake] for the static site generator. If you are familiar with the whole Java ecosystem it makes sense to stick with it.
+I started looking at https://jbake.org/[JBake] for the static site generator. Especially if you are familiar with the whole Java ecosystem it makes sense to stick with it.
 
 Finally, publishing a site that resides in a GitHub repository through https://pages.github.com/[GitHub Pages] is really straight-forward. There is not even any need for CI builds (if you don't want to), whatever is inside the `/docs` folder of the repository is getting published!
 
@@ -54,7 +54,7 @@ Setting the  destination folder of the JBake generated site was a hard requireme
 
 === Gradle Plugin
 
-Next atempt was the https://github.com/jbake-org/jbake-gradle-plugin[Gradle plugin] for JBake. This is where we hit the second roadblock. There were several  kind of exceptions.
+Next attempt was the https://github.com/jbake-org/jbake-gradle-plugin[Gradle plugin] for JBake. This is where we hit the second roadblock. There were several kinds of exceptions.
 
 For example, when trying to run the `bakePreview` Gradle task I was getting the following exception:
 
