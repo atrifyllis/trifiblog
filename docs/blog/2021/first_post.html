@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>How to create a blog fast using JBake and GitHub Pages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/prettify.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+  </head>
+  <body onload="prettyPrint()">
+    <div id="wrap">
+	
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../">Trifiblog</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../feed.xml">Subscribe</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            <li><a href="../../archive.html">Archive</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+		<h1>How to create a blog fast using JBake and GitHub Pages</h1>
+	</div>
+
+	<p><em>18 August 2021</em></p>
+
+	<p><div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_intro">Intro</a></li>
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_some_initial_requirements">Some Initial Requirements</a></li>
+<li><a href="#_uber_fails">Uber Fails</a>
+<ul class="sectlevel2">
+<li><a href="#_jbake_native">JBake "native"</a></li>
+<li><a href="#_gradle_plugin">Gradle Plugin</a></li>
+</ul>
+</li>
+<li><a href="#_maven_to_the_rescue">Maven to the rescue!</a>
+<ul class="sectlevel2">
+<li><a href="#_1_create_a_new_maven_project">1. Create a new Maven project</a></li>
+<li><a href="#_2_add_the_jbake_maven_build_configuration">2. Add the JBake Maven build configuration</a></li>
+<li><a href="#_3_generate_initial_site_structure">3. Generate initial site structure</a></li>
+<li><a href="#_4_serve_site_locally">4. Serve site locally</a></li>
+<li><a href="#_5_publish_to_github_pages">5. Publish to GitHub Pages</a></li>
+</ul>
+</li>
+<li><a href="#_extras">Extras</a>
+<ul class="sectlevel2">
+<li><a href="#_custom_domain">Custom domain</a></li>
+<li><a href="#_jbake_watch_issue">JBake watch issue</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_intro">Intro</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is so meta, but for my first blog post I wanted to start this blog by writing about the way it was created.
+You can find the repository of this blog here:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/atrifyllis/trifiblog">Trifiblog repository</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Basic familiarity with Maven</p>
+</li>
+<li>
+<p>A GitHub account</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_some_initial_requirements">Some Initial Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main requirements for this project was a fast and easy way to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>write blog posts</p>
+</li>
+<li>
+<p>generate a static site from the posts</p>
+</li>
+<li>
+<p>publish the blog online</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SSubjectively, the easiest way to write technical documentation is <a href="https://asciidoctor.org/">Asciidoc(tor)</a>, so we decided that writing the blog posts in Asciidoc was a no-brainer.</p>
+</div>
+<div class="paragraph">
+<p>I started looking at <a href="https://jbake.org/">JBake</a> for the static site generator. If you are familiar with the whole Java ecosystem it makes sense to stick with it.</p>
+</div>
+<div class="paragraph">
+<p>Finally, publishing a site that resides in a GitHub repository through <a href="https://pages.github.com/">GitHub Pages</a> is really straight-forward. There is not even any need for CI builds (if you don&#8217;t want to), whatever is inside the <code>/docs</code> folder of the repository is getting published!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_uber_fails">Uber Fails</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you don&#8217;t want to read about the initial failures, you can skip directly to <a href="#_Maven_to_the_rescue">the solution that worked for me</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_jbake_native">JBake "native"</h3>
+<div class="paragraph">
+<p>The first roadblock we hit was when we tried to use JBake directly in a Windows laptop. It seems relevant to this issue:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jbake-org/jbake/issues/655" class="bare">https://github.com/jbake-org/jbake/issues/655</a></p>
+</div>
+<div class="paragraph">
+<p>Setting the  destination folder of the JBake generated site was a hard requirement, since we needed it to be the <code>/docs</code> folder of the repository.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gradle_plugin">Gradle Plugin</h3>
+<div class="paragraph">
+<p>Next atempt was the <a href="https://github.com/jbake-org/jbake-gradle-plugin">Gradle plugin</a> for JBake. This is where we hit the second roadblock. There were several  kind of exceptions.</p>
+</div>
+<div class="paragraph">
+<p>For example, when trying to run the <code>bakePreview</code> Gradle task I was getting the following exception:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Cannot set readonly property: level for class: org.gradle.internal.logging.services.DefaultLoggingManager</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_maven_to_the_rescue">Maven to the rescue!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final and successful attempt was to use the <a href="https://github.com/jbake-org/jbake-Maven-plugin">JBake Maven plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p>These are the steps that worked for me:</p>
+</div>
+<div class="sect2">
+<h3 id="_1_create_a_new_maven_project">1. Create a new Maven project</h3>
+<div class="paragraph">
+<p>For example in IntelliJ this can be done from the new project wizard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_add_the_jbake_maven_build_configuration">2. Add the JBake Maven build configuration</h3>
+<div class="paragraph">
+<p>Add in the pom.xml file the following build configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml"> &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.jbake&lt;/groupId&gt;
+                &lt;artifactId&gt;jbake-Maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;0.3.5&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+                &lt;configuration&gt;
+                    &lt;outputDirectory&gt;./docs&lt;/outputDirectory&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+                &lt;/configuration&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;default-generate&lt;/id&gt;
+                        &lt;phase&gt;generate-resources&lt;/phase&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;generate&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+                &lt;dependencies&gt;
+                    &lt;!-- include required dependencies here, see below --&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt; <i class="conum" data-value="3"></i><b>(3)</b>
+                        &lt;artifactId&gt;asciidoctorj&lt;/artifactId&gt;
+                        &lt;version&gt;2.4.3&lt;/version&gt;
+                    &lt;/dependency&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;org.freemarker&lt;/groupId&gt; <i class="conum" data-value="4"></i><b>(4)</b>
+                        &lt;artifactId&gt;freemarker&lt;/artifactId&gt;
+                        &lt;version&gt;2.3.31&lt;/version&gt;
+                    &lt;/dependency&gt;
+                    &lt;dependency&gt;
+                        &lt;groupId&gt;com.sparkjava&lt;/groupId&gt; <i class="conum" data-value="5"></i><b>(5)</b>
+                        &lt;artifactId&gt;spark-core&lt;/artifactId&gt;
+                        &lt;version&gt;2.9.3&lt;/version&gt;
+                    &lt;/dependency&gt;
+                &lt;/dependencies&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use the latest version of JBake Maven plugin.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The output folder must be the one that is published from GitHub Pages(<code>/docs</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Add asciidoctor Maven dependency since we want to write the blog posts in asciidoc.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Add the templating engine of our choice (in this case using the <a href="https://jbake.org/docs/2.6.7/#initialisation_command">default</a> which is freemarker)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Add latest spark-core dependency to avoid an issue with the jbake:inline goal. More about this issue <a href="#_jbake_watch_issue">later</a>.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_generate_initial_site_structure">3. Generate initial site structure</h3>
+<div class="paragraph">
+<p>The Maven plugin provides a goal that seeds the project/site with example content and templates. This is a good starting point. Run the following in a CLI window:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn jbake:seed</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will create an initial structure inside <code>src/main/jbake</code> folder where the site will be generated from. The structure looks similar to this (click image for actual size):</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="/img/jbake_folder_structure.jpg" target="_blank" rel="noopener"><img src="/img/jbake_folder_structure.jpg" alt="Structure" width="100" height="100"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>The blog posts and pages that we create will reside inside <code>content/blog</code> directory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_serve_site_locally">4. Serve site locally</h3>
+<div class="paragraph">
+<p>The Maven plugin provides a goal to serve the site locally. This goal will watch for any changes and will also re-generate the site (in <code>/docs</code> folder). This way we can 1) see the changes in the browser immediately, 2) push the <code>/docs</code> folder in GitHub to publish the site automatically (more on that later).</p>
+</div>
+<div class="paragraph">
+<p>Run the following command from a CLI window:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn jbake:inline</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check the output for a similar line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[INFO] Started ServerConnector@47cdf91a{HTTP/1.1, (http/1.1)}{127.0.0.1:8820}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This means that in our local environment the site is accessible under the port 8802 and if we navigate to <code><a href="http://localhost:8820" class="bare">http://localhost:8820</a></code> we can see the sample blog content as generated by JBake.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_publish_to_github_pages">5. Publish to GitHub Pages</h3>
+<div class="paragraph">
+<p>We can of course delete all sample posts (maybe replacing the about page with our own). When we are ready to publish we need to link the local project with a GitHub repository.</p>
+</div>
+<div class="paragraph">
+<p>In Intellij go to menu Git  &gt; GitHub &gt; Share Project on GitHub. This implies that we have a GitHub account, and we have linked it with Intellij previously (out of scope for this article).</p>
+</div>
+<div class="paragraph">
+<p>This how the GitHub repository should look like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/jbake_github_structure.jpg" alt="GitHub" width="50%">
+</div>
+</div>
+<div class="paragraph">
+<p>Now we navigate to GitHub repository Settings &gt; Pages.</p>
+</div>
+<div class="paragraph">
+<p>First, we have to make the repository public if is not already.</p>
+</div>
+<div class="paragraph">
+<p>Next, we select in the Source section the <code>master</code> branch and the <code>/docs</code> folder.</p>
+</div>
+<div class="paragraph">
+<p>For our repository this is how the Pages page looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/jbake_github_pages.jpg" alt="jbake github pages" width="50%">
+</div>
+</div>
+<div class="paragraph">
+<p>If we save these changes, after a small delay we are able to browse our blog under:
+<code>&lt;username&gt;.github.com/&lt;repository_name&gt;</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Congratulations!</div>
+<div class="paragraph">
+<p>That is all! We now have our own blog published!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extras">Extras</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_custom_domain">Custom domain</h3>
+<div class="paragraph">
+<p>If we have a domain name or planning to buy one, there are some more steps involved to link the GitHub pages with our domain.</p>
+</div>
+<div class="paragraph">
+<p>Most of the work involved has to be done in whatever domain provider we are using, so it is out of scope for this article.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, this is what was needed for this particular case:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the domain name in Pages settings without a subdomain (for example <code>trifiblog.com</code> not <code>www.trifiblog.com</code>). This will create a new commit in our repository with a CNAME file with the following content:</p>
+<div class="listingblock">
+<div class="content">
+<pre>trifiblog.com</pre>
+</div>
+</div>
+</li>
+<li>
+<p>We navigate to the domain name provider web interface and try to find a way to change the DNS settings. In our case, we needed to add the following entries:</p>
+<div class="imageblock">
+<div class="content">
+<img src="/img/jbake_github_dns_entries.jpg" alt="jbake github dns entries">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The first four highlighted entries are <code>A</code> records that point to the IP addresses for GitHub Pages.</p>
+</div>
+<div class="paragraph">
+<p>The other highlighted entry is a <code>CNAME</code> record that points the <code>www.trifiblog.com</code> to the apex domain <code>trifiblog.com</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This last entry, take it with a grain of salt. This is <strong>not</strong> the way that GitHub recommends to set up apex and www domains together, so it is better to follow the official docs.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For mor information about custom domains and GitHub pages please check the <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">official GitHub documentation</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jbake_watch_issue">JBake watch issue</h3>
+<div class="paragraph">
+<p>The JBake Maven plugin provides a Maven goal <code>jbake:inline</code> for the first time, which bakes (= generates the site), watches and serves out content locally. WhenI tried running it for the first time, and tried changing a post to test the watch mode we got the following exception:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>...
+java.io.FileNotFoundException: C:\dev\WORSKPACE\JBAKE\triblog-Maven\docs\js\bootstrap.min.js (The requested operation cannot be performed on a file with a user-mapped section open)
+at java.io.FileOutputStream.open0 (Native Method)
+at java.io.FileOutputStream.open (
+...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jbake-org/jbake/issues/466#issuecomment-476161490">This</a> reply on the JBake GitHub issues helped me understand that the issue was the outdated spark-core dependency, which depends on an older Jetty version. So adding an explicit dependency to the latest spark-core (seems to) have solved the problem.</p>
+</div>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
+	<script src="https://utteranc.es/client.js"
+			repo="atrifyllis/triblog"
+			issue-term="pathname"
+			crossorigin="anonymous"
+			async>
+	</script>
+
+		</div>
+		<div id="push"></div>
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">&copy; 2014 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.7</a></p>
+      </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/prettify.js"></script>
+    
+  </body>
+</html>
+

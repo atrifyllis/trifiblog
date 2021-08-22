@@ -19,10 +19,6 @@
                 <artifactId>jbake-maven-plugin</artifactId>
                 <version>0.3.5</version>
                 <configuration>
-
-                    <!--
-                    <inputDirectory>${project.basedir}/src/main/resources</inputDirectory>
-                    -->
                     <outputDirectory>./docs</outputDirectory>
                 </configuration>
                 <executions>
