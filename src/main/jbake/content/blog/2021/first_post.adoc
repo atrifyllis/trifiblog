@@ -42,7 +42,7 @@ Finally, publishing a site that resides in a GitHub repository through https://p
 
 == Uber Fails
 
-NOTE: If you don't want to read about the initial failures, you can skip directly to <<_Maven_to_the_rescue,the solution that worked for me>>
+NOTE: If you don't want to read about the initial failures, you can skip directly to <<_maven_to_the_rescue,the solution that worked for me>>
 
 === JBake "native"
 

@@ -6,8 +6,8 @@
     <atom:link href="https://trifiblog.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A blog of a software engineer</description>
     <language>en-gb</language>
-    <pubDate>Mon, 23 Aug 2021 00:19:17 +0300</pubDate>
-    <lastBuildDate>Mon, 23 Aug 2021 00:19:17 +0300</lastBuildDate>
+    <pubDate>Mon, 23 Aug 2021 00:23:40 +0300</pubDate>
+    <lastBuildDate>Mon, 23 Aug 2021 00:23:40 +0300</lastBuildDate>
 
     <item>
       <title>How to create a blog fast using JBake and GitHub Pages</title>
@@ -111,7 +111,7 @@ You can find the repository of this blog here:&lt;/p&gt;
 &lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
-If you don&amp;#8217;t want to read about the initial failures, you can skip directly to &lt;a href=&quot;#_Maven_to_the_rescue&quot;&gt;the solution that worked for me&lt;/a&gt;
+If you don&amp;#8217;t want to read about the initial failures, you can skip directly to &lt;a href=&quot;#_maven_to_the_rescue&quot;&gt;the solution that worked for me&lt;/a&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
