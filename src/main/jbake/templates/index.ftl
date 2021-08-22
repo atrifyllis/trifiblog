@@ -9,7 +9,7 @@
   		<#if (post.status == "published")>
   			<a href="${post.uri}"><h1>${post.title}</h1></a>
   			<p>${post.date?string("dd MMMM yyyy")}</p>
-  			<p>${post.body}</p>
+  			<p>${post.summary}</p>
   		</#if>
   	</#list>
 	
