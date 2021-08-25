@@ -10,7 +10,9 @@
   			<a href="${post.uri}"><h1>${post.title}</h1></a>
   			<p>${post.date?string("dd MMMM yyyy")}</p>
   			<p>${post.summary}</p>
-  		</#if>
+			<a href="${post.uri}" role="button" class="btn btn-link" style="padding: 0;">Continue Reading</a>
+
+		</#if>
   	</#list>
 	
 	<hr />
