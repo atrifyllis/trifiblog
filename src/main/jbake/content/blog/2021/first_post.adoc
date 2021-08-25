@@ -1,4 +1,4 @@
-= How to create a blog fast using JBake and GitHub Pages
+= How to create a blog quickly using JBake and GitHub Pages
 Alexandros Trifyllis
 2021-08-18
 :icons: font
@@ -10,7 +10,7 @@ Alexandros Trifyllis
 :jbake-github-structure: /img/jbake_github_structure.jpg
 :jbake-github-pages: /img/jbake_github_pages.jpg
 :jbake-github-dns-entries: /img/jbake_github_dns_entries.jpg
-:jbake-summary: This is so meta, but for my first blog post I wanted to start this blog by writing about the way it was created.
+:jbake-summary: This is so meta, but for my first post I wanted to write about the way I created this blog.
 
 
 

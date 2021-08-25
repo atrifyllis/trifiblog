@@ -6,11 +6,11 @@
     <atom:link href="https://trifiblog.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A blog of a software engineer</description>
     <language>en-gb</language>
-    <pubDate>Mon, 23 Aug 2021 00:25:17 +0300</pubDate>
-    <lastBuildDate>Mon, 23 Aug 2021 00:25:17 +0300</lastBuildDate>
+    <pubDate>Wed, 25 Aug 2021 06:58:59 +0300</pubDate>
+    <lastBuildDate>Wed, 25 Aug 2021 06:58:59 +0300</lastBuildDate>
 
     <item>
-      <title>How to create a blog fast using JBake and GitHub Pages</title>
+      <title>How to create a blog quickly using JBake and GitHub Pages</title>
       <link>https://trifiblog.com/blog/2021/first_post.html</link>
       <pubDate>Wed, 18 Aug 2021 00:00:00 +0300</pubDate>
       <guid isPermaLink="false">blog/2021/first_post.html</guid>
@@ -48,7 +48,7 @@
 &lt;h2 id=&quot;_intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is so meta, but for my first blog post I wanted to start this blog by writing about the way it was created.
+&lt;p&gt;This is so meta, but for my first post I wanted to write about the way I created this blog.
 You can find the repository of this blog here:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
