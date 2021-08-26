@@ -207,9 +207,7 @@ image::{jbake-github-dns-entries}[]
 
 The first four highlighted entries are `A` records that point to the IP addresses for GitHub Pages.
 
-The other highlighted entry is a `CNAME` record that points the `www.trifiblog.com` to the apex domain `trifiblog.com`
-
-WARNING: This last entry, take it with a grain of salt. This is *not* the way that GitHub recommends to set up apex and www domains together, so it is better to follow the official docs.
+The other highlighted entry is a `CNAME` record that points the `www.trifiblog.com` to the apex domain `<username>.github.com`
 
 For mor information about custom domains and GitHub pages please check the https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site[official GitHub documentation]
 

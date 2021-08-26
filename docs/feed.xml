@@ -6,8 +6,8 @@
     <atom:link href="https://trifiblog.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A blog of a software engineer</description>
     <language>en-gb</language>
-    <pubDate>Wed, 25 Aug 2021 22:28:17 +0300</pubDate>
-    <lastBuildDate>Wed, 25 Aug 2021 22:28:17 +0300</lastBuildDate>
+    <pubDate>Thu, 26 Aug 2021 10:10:31 +0300</pubDate>
+    <lastBuildDate>Thu, 26 Aug 2021 10:10:31 +0300</lastBuildDate>
 
     <item>
       <title>How to create a blog quickly using JBake and GitHub Pages</title>
@@ -365,19 +365,7 @@ If you don&amp;#8217;t want to read about the initial failures, you can skip dir
 &lt;p&gt;The first four highlighted entries are &lt;code&gt;A&lt;/code&gt; records that point to the IP addresses for GitHub Pages.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The other highlighted entry is a &lt;code&gt;CNAME&lt;/code&gt; record that points the &lt;code&gt;www.trifiblog.com&lt;/code&gt; to the apex domain &lt;code&gt;trifiblog.com&lt;/code&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;admonitionblock warning&quot;&gt;
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td class=&quot;icon&quot;&gt;
-&lt;i class=&quot;fa icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
-&lt;/td&gt;
-&lt;td class=&quot;content&quot;&gt;
-This last entry, take it with a grain of salt. This is &lt;strong&gt;not&lt;/strong&gt; the way that GitHub recommends to set up apex and www domains together, so it is better to follow the official docs.
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
+&lt;p&gt;The other highlighted entry is a &lt;code&gt;CNAME&lt;/code&gt; record that points the &lt;code&gt;www.trifiblog.com&lt;/code&gt; to the apex domain &lt;code&gt;&amp;lt;username&amp;gt;.github.com&lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;For mor information about custom domains and GitHub pages please check the &lt;a href=&quot;https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site&quot;&gt;official GitHub documentation&lt;/a&gt;&lt;/p&gt;
