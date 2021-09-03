@@ -11,6 +11,7 @@ Alexandros Trifyllis
 :jbake-github-pages: /img/jbake_github_pages.jpg
 :jbake-github-dns-entries: /img/jbake_github_dns_entries.jpg
 :jbake-summary: This is so meta, but for my first post I wanted to write about the way I created this blog.
+:jbake-github-uterrances: /img/jbake_github_uterrances.jpg
 
 
 
@@ -33,12 +34,15 @@ The main requirements for this project was a fast and easy way to:
 * write blog posts
 * generate a static site from the posts
 * publish the blog online
+* allow users to post comments
 
 Subjectively, the easiest way to write technical documentation is https://asciidoctor.org/[Asciidoc(tor)], so we decided that writing the blog posts in Asciidoc was a no-brainer.
 
 I started looking at https://jbake.org/[JBake] for the static site generator. Especially if you are familiar with the whole Java ecosystem it makes sense to stick with it.
 
-Finally, publishing a site that resides in a GitHub repository through https://pages.github.com/[GitHub Pages] is really straight-forward. There is not even any need for CI builds (if you don't want to), whatever is inside the `/docs` folder of the repository is getting published!
+Publishing a site that resides in a GitHub repository through https://pages.github.com/[GitHub Pages] is really straight-forward. There is not even any need for CI builds (if you don't want to), whatever is inside the `/docs` folder of the repository is getting published!
+
+Finally, for comments I found https://github.com/utterance/utterances[uterrances] project (more on that later).
 
 == Uber Fails
 
@@ -179,10 +183,42 @@ image::{jbake-github-pages}[width=50%]
 If we save these changes, after a small delay we are able to browse our blog under:
 `<username>.github.com/<repository_name>`.
 
+
+=== 6. Allow users to comment on your posts
+
+As mentioned before, we are going to use the https://github.com/utterance/utterances[utterances] project.
+
+What is great with it is that comments are stored as GitHub issues in the blog repository. So it is a great fit for our blog! It's free, no ads and no tracking. What else can you ask?
+
+The only downside is that to add a comment the user must have a GitHub account. But then again this is a dev-oriented blog, so we expect the majority of the readers to have such accounts.
+
+We need to do the following to enable utterances comments:
+
+* Go to https://github.com/apps/utterances and click Configure, to install the application in GitHub.
+
+* Select your blog repository only:
+
+image::{jbake-github-uterrances}[width=50%]
+
+* Go to post.ftl template and add the following template before the footer (don't forget to change the repo attribute with your own repository path!!):
++
+[source,javascript]
+----
+<script src="https://utteranc.es/client.js"
+			repo="atrifyllis/trifiblog"
+			issue-term="pathname"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+</script>
+----
+
+* Make sure that at the end of every post you can see a Comments section.
+
 [sidebar]
 .Congratulations!
 --
-That is all! We now have our own blog published!
+That is all! We now have our own blog published, and we can also get user feedback with the comments!
 --
 
 == Extras

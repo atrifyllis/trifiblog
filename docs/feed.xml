@@ -6,8 +6,8 @@
     <atom:link href="https://trifiblog.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>A blog of a software engineer</description>
     <language>en-gb</language>
-    <pubDate>Thu, 26 Aug 2021 10:10:31 +0300</pubDate>
-    <lastBuildDate>Thu, 26 Aug 2021 10:10:31 +0300</lastBuildDate>
+    <pubDate>Fri, 3 Sep 2021 22:15:07 +0300</pubDate>
+    <lastBuildDate>Fri, 3 Sep 2021 22:15:07 +0300</lastBuildDate>
 
     <item>
       <title>How to create a blog quickly using JBake and GitHub Pages</title>
@@ -34,6 +34,7 @@
 &lt;li&gt;&lt;a href=&quot;#_3_generate_initial_site_structure&quot;&gt;3. Generate initial site structure&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#_4_serve_site_locally&quot;&gt;4. Serve site locally&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#_5_publish_to_github_pages&quot;&gt;5. Publish to GitHub Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#_6_allow_users_to_comment_on_your_posts&quot;&gt;6. Allow users to comment on your posts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#_extras&quot;&gt;Extras&lt;/a&gt;
@@ -88,6 +89,9 @@ You can find the repository of this blog here:&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;publish the blog online&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;allow users to post comments&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -97,7 +101,10 @@ You can find the repository of this blog here:&lt;/p&gt;
 &lt;p&gt;I started looking at &lt;a href=&quot;https://jbake.org/&quot;&gt;JBake&lt;/a&gt; for the static site generator. Especially if you are familiar with the whole Java ecosystem it makes sense to stick with it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Finally, publishing a site that resides in a GitHub repository through &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; is really straight-forward. There is not even any need for CI builds (if you don&amp;#8217;t want to), whatever is inside the &lt;code&gt;/docs&lt;/code&gt; folder of the repository is getting published!&lt;/p&gt;
+&lt;p&gt;Publishing a site that resides in a GitHub repository through &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; is really straight-forward. There is not even any need for CI builds (if you don&amp;#8217;t want to), whatever is inside the &lt;code&gt;/docs&lt;/code&gt; folder of the repository is getting published!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Finally, for comments I found &lt;a href=&quot;https://github.com/utterance/utterances&quot;&gt;uterrances&lt;/a&gt; project (more on that later).&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -316,11 +323,62 @@ If you don&amp;#8217;t want to read about the initial failures, you can skip dir
 &lt;p&gt;If we save these changes, after a small delay we are able to browse our blog under:
 &lt;code&gt;&amp;lt;username&amp;gt;.github.com/&amp;lt;repository_name&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;_6_allow_users_to_comment_on_your_posts&quot;&gt;6. Allow users to comment on your posts&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As mentioned before, we are going to use the &lt;a href=&quot;https://github.com/utterance/utterances&quot;&gt;utterances&lt;/a&gt; project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What is great with it is that comments are stored as GitHub issues in the blog repository. So it is a great fit for our blog! It&amp;#8217;s free, no ads and no tracking. What else can you ask?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The only downside is that to add a comment the user must have a GitHub account. But then again this is a dev-oriented blog, so we expect the majority of the readers to have such accounts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We need to do the following to enable utterances comments:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Go to &lt;a href=&quot;https://github.com/apps/utterances&quot; class=&quot;bare&quot;&gt;https://github.com/apps/utterances&lt;/a&gt; and click Configure, to install the application in GitHub.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select your blog repository only:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;/img/jbake_github_uterrances.jpg&quot; alt=&quot;jbake github uterrances&quot; width=&quot;50%&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Go to post.ftl template and add the following template before the footer (don&amp;#8217;t forget to change the repo attribute with your own repository path!!):&lt;/p&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight&quot;&gt;&lt;code data-lang=&quot;javascript&quot;&gt;&amp;lt;script src=&quot;https://utteranc.es/client.js&quot;
+			repo=&quot;atrifyllis/trifiblog&quot;
+			issue-term=&quot;pathname&quot;
+			theme=&quot;github-light&quot;
+			crossorigin=&quot;anonymous&quot;
+			async&amp;gt;
+&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Make sure that at the end of every post you can see a Comments section.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;div class=&quot;sidebarblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Congratulations!&lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That is all! We now have our own blog published!&lt;/p&gt;
+&lt;p&gt;That is all! We now have our own blog published and we can also get user feedback with the comments!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -365,7 +423,7 @@ If you don&amp;#8217;t want to read about the initial failures, you can skip dir
 &lt;p&gt;The first four highlighted entries are &lt;code&gt;A&lt;/code&gt; records that point to the IP addresses for GitHub Pages.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The other highlighted entry is a &lt;code&gt;CNAME&lt;/code&gt; record that points the &lt;code&gt;www.trifiblog.com&lt;/code&gt; to the apex domain &lt;code&gt;&amp;lt;username&amp;gt;.github.com&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The other highlighted entry is a &lt;code&gt;CNAME&lt;/code&gt; record that points the &lt;code&gt;www.trifiblog.com&lt;/code&gt; to the github username domain: &lt;code&gt;&amp;lt;username&amp;gt;.github.com&lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;For mor information about custom domains and GitHub pages please check the &lt;a href=&quot;https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site&quot;&gt;official GitHub documentation&lt;/a&gt;&lt;/p&gt;

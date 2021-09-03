@@ -29,7 +29,7 @@
   </head>
   <body onload="prettyPrint()">
     <div id="wrap">
-	
+
 	<!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -79,6 +79,7 @@
 <li><a href="#_3_generate_initial_site_structure">3. Generate initial site structure</a></li>
 <li><a href="#_4_serve_site_locally">4. Serve site locally</a></li>
 <li><a href="#_5_publish_to_github_pages">5. Publish to GitHub Pages</a></li>
+<li><a href="#_6_allow_users_to_comment_on_your_posts">6. Allow users to comment on your posts</a></li>
 </ul>
 </li>
 <li><a href="#_extras">Extras</a>
@@ -133,6 +134,9 @@ You can find the repository of this blog here:</p>
 <li>
 <p>publish the blog online</p>
 </li>
+<li>
+<p>allow users to post comments</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -142,7 +146,10 @@ You can find the repository of this blog here:</p>
 <p>I started looking at <a href="https://jbake.org/">JBake</a> for the static site generator. Especially if you are familiar with the whole Java ecosystem it makes sense to stick with it.</p>
 </div>
 <div class="paragraph">
-<p>Finally, publishing a site that resides in a GitHub repository through <a href="https://pages.github.com/">GitHub Pages</a> is really straight-forward. There is not even any need for CI builds (if you don&#8217;t want to), whatever is inside the <code>/docs</code> folder of the repository is getting published!</p>
+<p>Publishing a site that resides in a GitHub repository through <a href="https://pages.github.com/">GitHub Pages</a> is really straight-forward. There is not even any need for CI builds (if you don&#8217;t want to), whatever is inside the <code>/docs</code> folder of the repository is getting published!</p>
+</div>
+<div class="paragraph">
+<p>Finally, for comments I found <a href="https://github.com/utterance/utterances">uterrances</a> project (more on that later).</p>
 </div>
 </div>
 </div>
@@ -361,11 +368,62 @@ If you don&#8217;t want to read about the initial failures, you can skip directl
 <p>If we save these changes, after a small delay we are able to browse our blog under:
 <code>&lt;username&gt;.github.com/&lt;repository_name&gt;</code>.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_6_allow_users_to_comment_on_your_posts">6. Allow users to comment on your posts</h3>
+<div class="paragraph">
+<p>As mentioned before, we are going to use the <a href="https://github.com/utterance/utterances">utterances</a> project.</p>
+</div>
+<div class="paragraph">
+<p>What is great with it is that comments are stored as GitHub issues in the blog repository. So it is a great fit for our blog! It&#8217;s free, no ads and no tracking. What else can you ask?</p>
+</div>
+<div class="paragraph">
+<p>The only downside is that to add a comment the user must have a GitHub account. But then again this is a dev-oriented blog, so we expect the majority of the readers to have such accounts.</p>
+</div>
+<div class="paragraph">
+<p>We need to do the following to enable utterances comments:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to <a href="https://github.com/apps/utterances" class="bare">https://github.com/apps/utterances</a> and click Configure, to install the application in GitHub.</p>
+</li>
+<li>
+<p>Select your blog repository only:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/jbake_github_uterrances.jpg" alt="jbake github uterrances" width="50%">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to post.ftl template and add the following template before the footer (don&#8217;t forget to change the repo attribute with your own repository path!!):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="javascript">&lt;script src="https://utteranc.es/client.js"
+			repo="atrifyllis/trifiblog"
+			issue-term="pathname"
+			theme="github-light"
+			crossorigin="anonymous"
+			async&gt;
+&lt;/script&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make sure that at the end of every post you can see a Comments section.</p>
+</li>
+</ul>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Congratulations!</div>
 <div class="paragraph">
-<p>That is all! We now have our own blog published!</p>
+<p>That is all! We now have our own blog published and we can also get user feedback with the comments!</p>
 </div>
 </div>
 </div>
@@ -410,7 +468,7 @@ If you don&#8217;t want to read about the initial failures, you can skip directl
 <p>The first four highlighted entries are <code>A</code> records that point to the IP addresses for GitHub Pages.</p>
 </div>
 <div class="paragraph">
-<p>The other highlighted entry is a <code>CNAME</code> record that points the <code>www.trifiblog.com</code> to the apex domain <code>&lt;username&gt;.github.com</code></p>
+<p>The other highlighted entry is a <code>CNAME</code> record that points the <code>www.trifiblog.com</code> to the github username domain: <code>&lt;username&gt;.github.com</code></p>
 </div>
 <div class="paragraph">
 <p>For mor information about custom domains and GitHub pages please check the <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">official GitHub documentation</a></p>
@@ -442,6 +500,7 @@ at java.io.FileOutputStream.open (
 	<script src="https://utteranc.es/client.js"
 			repo="atrifyllis/trifiblog"
 			issue-term="pathname"
+			theme="github-light"
 			crossorigin="anonymous"
 			async>
 	</script>

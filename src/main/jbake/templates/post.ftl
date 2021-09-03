@@ -1,5 +1,5 @@
 <#include "header.ftl">
-	
+
 	<#include "menu.ftl">
 
 	<#if (content.title)??>
@@ -17,7 +17,7 @@
 	<script src="https://utteranc.es/client.js"
 			repo="atrifyllis/trifiblog"
 			issue-term="pathname"
-			<#--		theme="github-light"-->
+			theme="github-light"
 			crossorigin="anonymous"
 			async>
 	</script>
