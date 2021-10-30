@@ -1,0 +1,36 @@
+= How to deploy a docker image of a Spring Boot app in AWS using Terraform
+Alexandros Trifyllis
+2021-10-30
+:icons: font
+:toc:
+:jbake-type: post
+:jbake-status: published
+:jbake-tags: spring-boot, terraform, aws, aws-ecs
+:jbake-summary: In this post I will go through the struggle that is to develop a terraform script for deploying a dockerized application.
+
+
+
+== Intro
+
+{jbake-summary}
+You can find the repository of this blog here:
+
+https://github.com/atrifyllis/terraform-trial[terraform-trial repository]
+
+== Prerequisites
+
+* Some familiarity with Spring Boot, Docker, AWS, Terraform
+
+== Some Initial Requirements
+
+The main requirements for this project was a fast and easy way to:
+
+* dockerize a spring boot application
+* automatic deployment it in AWS Elastic Container Service (ECS)
+* high availability
+* resiliency
+
+
+== But first, the app!
+
+We need a very simple spring boot application so we can have something to test.
